@@ -11,32 +11,34 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Try 0.1</title>
     <!--methods n vars-->
-    <script>
-        var app = new Vue({
-            
-            data: {
-                eleccion:  null,
-                botones:[
-                    {
-                        nombre: 'SALA 1',
-                        estado: false
-                    }
-                ]
-            },
-            methods: {
-                luz(sala){
-                    botones.forEach(element => {if(element.nombre === sala) eleccion=element.estado } );
-                },
-                cambio(sala){
-                    botones.forEach(element => {if(element.nombre === sala){ if(element.estado === true) {element.estado = false} else{element.estado=true} }})
-                }
-            }
-        })
-    </script>
+    
 </head>
-<body>
+<body id="app">
     <img src="fondo.png">
     <img style="left:759px; top:125px; position:absolute" v-if="luz('SALA 1')" src="on.png"> 
-    <button onclick="cambio('SALA 1')"> SALA 1 </button>
+    <button onClick="cambio('SALA 1')"> SALA 1 </button>
 </body>
 </html>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            eleccion:  null,
+            botones:[
+                {
+                    nombre: 'SALA 1',
+                    estado: false
+                }
+            ]
+        },
+        methods: {
+            luz(sala){
+                botones.forEach(element => {if(element.nombre === sala) eleccion=element.estado } );
+            },
+            cambio(sala){
+                botones.forEach(element => {if(element.nombre === sala){ if(element.estado === true) {element.estado = false} else{element.estado=true} }})
+            }
+        }
+    })
+</script>
