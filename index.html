@@ -10,9 +10,33 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Try 0.1</title>
+    <!--methods n vars-->
+    <script>
+        var app = new Vue({
+            
+            data: {
+                eleccion:  null,
+                botones:[
+                    {
+                        nombre: 'SALA 1',
+                        estado: false
+                    }
+                ]
+            },
+            methods: {
+                luz(sala){
+                    botones.forEach(element => {if(element.nombre === sala) eleccion=element.estado } );
+                },
+                cambio(sala){
+                    botones.forEach(element => {if(element.nombre === sala){ if(element.estado === true) {element.estado = false} else{element.estado=true} }})
+                }
+            }
+        })
+    </script>
 </head>
 <body>
     <img src="fondo.png">
-    <img v-if="luz('SALA 1')"
+    <img style="left:759px; top:125px; position:absolute" v-if="luz('SALA 1')" src="on.png"> 
+    <button onclick="cambio('SALA 1')"> SALA 1 </button>
 </body>
 </html>
